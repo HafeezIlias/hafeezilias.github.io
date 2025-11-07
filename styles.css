@@ -592,16 +592,24 @@ nav {
     border-color: rgba(99, 102, 241, 0.5);
 }
 
-.tech-icon {
-    font-size: 3rem;
+.tech-logo {
+    width: 60px;
+    height: 60px;
     margin-bottom: 0.75rem;
     position: relative;
     z-index: 1;
     transition: transform 0.3s ease;
+    object-fit: contain;
 }
 
-.tech-item:hover .tech-icon {
+.tech-item:hover .tech-logo {
     transform: scale(1.2) rotate(5deg);
+}
+
+/* Special handling for logos that need inverted colors on dark background */
+.express-logo,
+.nextjs-logo {
+    filter: invert(1);
 }
 
 .tech-name {
@@ -884,8 +892,9 @@ footer::before {
         padding: 1rem;
     }
 
-    .tech-icon {
-        font-size: 2.5rem;
+    .tech-logo {
+        width: 50px;
+        height: 50px;
     }
 
     .tech-name {
