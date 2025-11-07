@@ -593,8 +593,8 @@ nav {
 }
 
 .tech-logo {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     margin-bottom: 0.75rem;
     position: relative;
     z-index: 1;
@@ -893,8 +893,8 @@ footer::before {
     }
 
     .tech-logo {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
     }
 
     .tech-name {
