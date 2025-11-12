@@ -4,114 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hafeez Ilias - Software & IoT Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': '#0a0a0f',
+                        'bg-secondary': '#12121a',
+                        'bg-card': '#1a1a27',
+                        'text-primary': '#e4e4e7',
+                        'text-secondary': '#a1a1aa',
+                        'accent': '#6366f1',
+                        'accent-hover': '#4f46e5',
+                    },
+                    backgroundImage: {
+                        'gradient-custom': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        'gradient-custom-2': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom animations and effects */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-reverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes pulse-custom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .marquee-content {
+            animation: marquee 40s linear infinite;
+        }
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+        .marquee-reverse {
+            animation: marquee-reverse 40s linear infinite;
+        }
+        .animate-pulse-custom {
+            animation: pulse-custom 2s infinite;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .express-logo, .nextjs-logo {
+            filter: invert(1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">HafeezIlias</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#working">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+<body class="bg-bg-primary text-text-primary font-sans leading-relaxed overflow-x-hidden">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-bg-primary/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] py-6">
+        <nav class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text no-underline transition-all duration-300 hover:scale-105 hover:brightness-125">HafeezIlias</a>
+            <ul class="flex gap-8 list-none">
+                <li><a href="#home" class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">Home</a></li>
+                <li><a href="#about" class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">About</a></li>
+                <li><a href="#working" class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">Projects</a></li>
+                <li><a href="#contact" class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero container" id="home">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hafeez Ilias</h1>
-                    <p class="subtitle">Software & IoT Developer</p>
-                    <p>Passionate about building practical and impactful technology — from smart IoT systems to full-stack web and mobile applications. Active in leadership as MPP (Student Representative Council) at Universiti Utara Malaysia.</p>
-                    <div class="cta-buttons">
-                        <a href="#working" class="btn btn-primary">View Projects</a>
-                        <a href="https://github.com/HafeezIlias" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-8 py-24 animate-fade-in-up" id="home">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Hafeez Ilias</h1>
+                    <p class="text-xl gradient-text font-semibold mb-6">Software & IoT Developer</p>
+                    <p class="text-lg text-text-secondary mb-8 leading-relaxed">Passionate about building practical and impactful technology — from smart IoT systems to full-stack web and mobile applications. Active in leadership as MPP (Student Representative Council) at Universiti Utara Malaysia.</p>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="#working" class="px-8 py-3.5 rounded-lg no-underline font-semibold text-base transition-all duration-300 bg-gradient-custom text-white relative overflow-hidden before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-500 hover:before:left-full hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">View Projects</a>
+                        <a href="https://github.com/HafeezIlias" target="_blank" class="px-8 py-3.5 rounded-lg no-underline font-semibold text-base transition-all duration-300 bg-bg-card text-text-primary border border-white/10 hover:bg-accent/10 hover:border-accent hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(99,102,241,0.2)]">GitHub Profile</a>
                     </div>
                 </div>
-                <div class="profile-image-container">
-                    <img src="profile.jpg" alt="Hafeez Ilias" class="profile-image">
+                <div class="flex justify-center items-center">
+                    <img src="profile.jpg" alt="Hafeez Ilias" class="w-full max-w-md rounded-3xl shadow-[0_20px_60px_rgba(99,102,241,0.3),0_0_40px_rgba(99,102,241,0.2)] transition-all duration-300 border-2 border-accent/20 hover:scale-105 hover:rotate-2 hover:shadow-[0_30px_80px_rgba(99,102,241,0.4),0_0_60px_rgba(99,102,241,0.3)]">
                 </div>
             </div>
         </section>
 
-        <section class="about" id="about">
-            <div class="container">
-                <h2 class="section-title">Current Focus</h2>
-                <p class="section-subtitle">Expanding technical expertise across multiple domains</p>
-                <div class="focus-grid">
-                    <div class="focus-card">
-                        <div class="focus-icon">☁️</div>
-                        <h3>Cloud Infrastructure</h3>
-                        <p>Building scalable cloud-based solutions with AWS and modern DevOps practices</p>
+        <!-- About Section -->
+        <section class="bg-bg-secondary py-24" id="about">
+            <div class="max-w-7xl mx-auto px-8">
+                <h2 class="text-center text-4xl font-bold mb-4">Current Focus</h2>
+                <p class="text-center text-text-secondary mb-16 text-lg">Expanding technical expertise across multiple domains</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">☁️</div>
+                            <h3 class="text-xl mb-2 font-semibold">Cloud Infrastructure</h3>
+                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Building scalable cloud-based solutions with AWS and modern DevOps practices</p>
+                        </div>
                     </div>
-                    <div class="focus-card">
-                        <div class="focus-icon">📱</div>
-                        <h3>Mobile Development</h3>
-                        <p>Creating cross-platform applications with Flutter and React Native</p>
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">📱</div>
+                            <h3 class="text-xl mb-2 font-semibold">Mobile Development</h3>
+                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Creating cross-platform applications with Flutter and React Native</p>
+                        </div>
                     </div>
-                    <div class="focus-card">
-                        <div class="focus-icon">🌐</div>
-                        <h3>Full-Stack Development</h3>
-                        <p>Developing end-to-end solutions with MERN stack and modern frameworks</p>
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">🌐</div>
+                            <h3 class="text-xl mb-2 font-semibold">Full-Stack Development</h3>
+                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Developing end-to-end solutions with MERN stack and modern frameworks</p>
+                        </div>
                     </div>
-                    <div class="focus-card">
-                        <div class="focus-icon">📡</div>
-                        <h3>IoT Innovation</h3>
-                        <p>Designing smart IoT systems for real-world applications and challenges</p>
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">📡</div>
+                            <h3 class="text-xl mb-2 font-semibold">IoT Innovation</h3>
+                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Designing smart IoT systems for real-world applications and challenges</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="working container" id="working">
-            <h2 class="section-title">Currently Working On</h2>
-            <p class="section-subtitle">Active projects in development</p>
-            <div class="working-list">
-                <div class="working-item">
-                    <strong>🏡 Home & Sales Project</strong> - Full-stack property sales and rental platform using MERN Stack
+        <!-- Currently Working On Section -->
+        <section class="max-w-7xl mx-auto px-8 py-24" id="working">
+            <h2 class="text-center text-4xl font-bold mb-4">Currently Working On</h2>
+            <p class="text-center text-text-secondary mb-16 text-lg">Active projects in development</p>
+            <div class="grid gap-6 max-w-4xl mx-auto">
+                <div class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
+                    <strong class="text-accent text-lg">🏡 Home & Sales Project</strong> - Full-stack property sales and rental platform using MERN Stack
                 </div>
-                <div class="working-item">
-                    <strong>📡 TrailBeacon</strong> - IoT device development for tracking hikers in areas without network coverage
+                <div class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
+                    <strong class="text-accent text-lg">📡 TrailBeacon</strong> - IoT device development for tracking hikers in areas without network coverage
                 </div>
-                <div class="working-item">
-                    <strong>📱 Online Selling App</strong> - Upgrading Flutter mobile application for e-commerce
+                <div class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
+                    <strong class="text-accent text-lg">📱 Online Selling App</strong> - Upgrading Flutter mobile application for e-commerce
                 </div>
-                <div class="working-item">
-                    <strong>🚀 Play Store Publishing</strong> - Preparing new applications for Google Play Store launch
+                <div class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
+                    <strong class="text-accent text-lg">🚀 Play Store Publishing</strong> - Preparing new applications for Google Play Store launch
                 </div>
             </div>
         </section>
 
-        <section class="learning" id="learning">
-            <div class="container">
-                <h2 class="section-title">Currently Learning</h2>
-                <p class="section-subtitle">Continuous skill development and growth</p>
-                <div class="learning-grid">
-                    <div class="learning-card">
-                        <h3>Backend & Architecture</h3>
-                        <ul>
-                            <li>Mastering MERN stack scalability</li>
-                            <li>System performance optimization</li>
-                            <li>API security best practices</li>
+        <!-- Currently Learning Section -->
+        <section class="bg-bg-secondary py-24" id="learning">
+            <div class="max-w-7xl mx-auto px-8">
+                <h2 class="text-center text-4xl font-bold mb-4">Currently Learning</h2>
+                <p class="text-center text-text-secondary mb-16 text-lg">Continuous skill development and growth</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:border-accent/40">
+                        <h3 class="text-xl mb-4 text-accent">Backend & Architecture</h3>
+                        <ul class="list-none p-0">
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">Mastering MERN stack scalability</li>
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">System performance optimization</li>
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">API security best practices</li>
                         </ul>
                     </div>
-                    <div class="learning-card">
-                        <h3>Mobile Development</h3>
-                        <ul>
-                            <li>Production-level Flutter architecture</li>
-                            <li>State management patterns</li>
-                            <li>IoT device integration</li>
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:border-accent/40">
+                        <h3 class="text-xl mb-4 text-accent">Mobile Development</h3>
+                        <ul class="list-none p-0">
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">Production-level Flutter architecture</li>
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">State management patterns</li>
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">IoT device integration</li>
                         </ul>
                     </div>
-                    <div class="learning-card">
-                        <h3>Cloud & DevOps</h3>
-                        <ul>
-                            <li>Docker and Kubernetes</li>
-                            <li>AWS Cloud Practitioner certification</li>
-                            <li>CI/CD pipeline implementation</li>
+                    <div class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:border-accent/40">
+                        <h3 class="text-xl mb-4 text-accent">Cloud & DevOps</h3>
+                        <ul class="list-none p-0">
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">Docker</li>
+                            <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">Ongoing AWS Cloud Practitioner certification</li>
+                            <!-- <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">CI/CD pipeline implementation</li> -->
                         </ul>
                     </div>
                 </div>
@@ -119,270 +222,274 @@
         </section>
 
         <!-- Tech Stack Marquee Section -->
-        <section class="tech-stack-section">
-            <div class="tech-stack-title">
-                <h2>Technologies & Tools</h2>
-                <p>Building with modern technologies across the stack</p>
+        <section class="py-16 bg-bg-secondary overflow-hidden relative">
+            <div class="absolute top-0 left-0 w-48 h-full z-10 pointer-events-none bg-gradient-to-r from-bg-secondary to-transparent"></div>
+            <div class="absolute top-0 right-0 w-48 h-full z-10 pointer-events-none bg-gradient-to-l from-bg-secondary to-transparent"></div>
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2 gradient-text">Technologies & Tools</h2>
+                <p class="text-text-secondary text-base">Building with modern technologies across the stack</p>
             </div>
 
             <!-- First Row - Languages & Frontend -->
-            <div class="marquee-container">
-                <div class="marquee-content">
+            <div class="w-full overflow-hidden relative">
+                <div class="marquee-content flex w-fit">
                     <!-- First set -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="tech-logo">
-                        <div class="tech-name">React</div>
-                        <div class="tech-category">Frontend</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">React</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Frontend</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" class="tech-logo">
-                        <div class="tech-name">Flutter</div>
-                        <div class="tech-category">Mobile</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Flutter</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Mobile</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="tech-logo">
-                        <div class="tech-name">Node.js</div>
-                        <div class="tech-category">Backend</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Node.js</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-logo">
-                        <div class="tech-name">Python</div>
-                        <div class="tech-category">Language</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Python</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="tech-logo">
-                        <div class="tech-name">MongoDB</div>
-                        <div class="tech-category">Database</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">MongoDB</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="tech-logo">
-                        <div class="tech-name">Firebase</div>
-                        <div class="tech-category">Backend</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Firebase</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="tech-logo">
-                        <div class="tech-name">AWS</div>
-                        <div class="tech-category">Cloud</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">AWS</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Cloud</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="tech-logo">
-                        <div class="tech-name">Docker</div>
-                        <div class="tech-category">DevOps</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Docker</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">DevOps</div>
                     </div>
                     <!-- Duplicate set for seamless loop -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="tech-logo">
-                        <div class="tech-name">React</div>
-                        <div class="tech-category">Frontend</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">React</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Frontend</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" class="tech-logo">
-                        <div class="tech-name">Flutter</div>
-                        <div class="tech-category">Mobile</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Flutter</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Mobile</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="tech-logo">
-                        <div class="tech-name">Node.js</div>
-                        <div class="tech-category">Backend</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Node.js</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-logo">
-                        <div class="tech-name">Python</div>
-                        <div class="tech-category">Language</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Python</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="tech-logo">
-                        <div class="tech-name">MongoDB</div>
-                        <div class="tech-category">Database</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">MongoDB</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="tech-logo">
-                        <div class="tech-name">Firebase</div>
-                        <div class="tech-category">Backend</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Firebase</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="tech-logo">
-                        <div class="tech-name">AWS</div>
-                        <div class="tech-category">Cloud</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">AWS</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Cloud</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="tech-logo">
-                        <div class="tech-name">Docker</div>
-                        <div class="tech-category">DevOps</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Docker</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">DevOps</div>
                     </div>
                 </div>
             </div>
 
             <!-- Second Row - Tools & Platforms (Reverse) -->
-            <div class="marquee-container" style="margin-top: 2rem;">
-                <div class="marquee-content marquee-reverse">
+            <div class="w-full overflow-hidden relative mt-8">
+                <div class="marquee-content marquee-reverse flex w-fit">
                     <!-- First set -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="tech-logo">
-                        <div class="tech-name">Figma</div>
-                        <div class="tech-category">Design</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Figma</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Design</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="tech-logo">
-                        <div class="tech-name">PostgreSQL</div>
-                        <div class="tech-category">Database</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">PostgreSQL</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="tech-logo">
-                        <div class="tech-name">Git</div>
-                        <div class="tech-category">Version Control</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Git</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Version Control</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" class="tech-logo">
-                        <div class="tech-name">Arduino</div>
-                        <div class="tech-category">IoT</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Arduino</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">IoT</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="tech-logo express-logo">
-                        <div class="tech-name">Express</div>
-                        <div class="tech-category">Framework</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain express-logo">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Express</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="tech-logo">
-                        <div class="tech-name">VS Code</div>
-                        <div class="tech-category">Editor</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">VS Code</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Editor</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="tech-logo nextjs-logo">
-                        <div class="tech-name">Next.js</div>
-                        <div class="tech-category">Framework</div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" class="tech-logo">
-                        <div class="tech-name">Dart</div>
-                        <div class="tech-category">Language</div>
+                    <!-- <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain nextjs-logo">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Next.js</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
+                    </div> -->
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Dart</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
                     </div>
                     <!-- Duplicate set for seamless loop -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="tech-logo">
-                        <div class="tech-name">Figma</div>
-                        <div class="tech-category">Design</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Figma</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Design</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="tech-logo">
-                        <div class="tech-name">PostgreSQL</div>
-                        <div class="tech-category">Database</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">PostgreSQL</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="tech-logo">
-                        <div class="tech-name">Git</div>
-                        <div class="tech-category">Version Control</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Git</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Version Control</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" class="tech-logo">
-                        <div class="tech-name">Arduino</div>
-                        <div class="tech-category">IoT</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Arduino</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">IoT</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="tech-logo express-logo">
-                        <div class="tech-name">Express</div>
-                        <div class="tech-category">Framework</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain express-logo">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Express</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="tech-logo">
-                        <div class="tech-name">VS Code</div>
-                        <div class="tech-category">Editor</div>
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">VS Code</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Editor</div>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="tech-logo nextjs-logo">
-                        <div class="tech-name">Next.js</div>
-                        <div class="tech-category">Framework</div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" class="tech-logo">
-                        <div class="tech-name">Dart</div>
-                        <div class="tech-category">Language</div>
+                    <!-- <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain nextjs-logo">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Next.js</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
+                    </div> -->
+                    <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
+                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Dart</div>
+                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="projects container" id="projects">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Portfolio of applications and systems</p>
-            <div style="overflow-x: auto;">
-                <table class="project-table">
+        <!-- Featured Projects Section -->
+        <section class="max-w-7xl mx-auto px-8 py-24" id="projects">
+            <h2 class="text-center text-4xl font-bold mb-4">Featured Projects</h2>
+            <p class="text-center text-text-secondary mb-16 text-lg">Portfolio of applications and systems</p>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse mt-8 bg-bg-card rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-white/10">
                     <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Description</th>
-                            <th>Stack</th>
-                            <th>Status</th>
+                        <tr class="bg-gradient-custom text-white">
+                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Project</th>
+                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Description</th>
+                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Stack</th>
+                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Property Sales & Rent</strong></td>
-                            <td>Platform for property sale, rent, owner and agency management</td>
-                            <td>
-                                <div class="project-tags">
-                                    <span class="tag">MERN</span>
-                                    <span class="tag">Cloudinary</span>
-                                    <span class="tag">Clerk</span>
+                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
+                            <td class="p-6 px-5 border-b border-white/10"><strong>Property Sales & Rent</strong></td>
+                            <td class="p-6 px-5 border-b border-white/10">Platform for property sale, rent, owner and agency management</td>
+                            <td class="p-6 px-5 border-b border-white/10">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">MERN</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Cloudinary</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Clerk</span>
                                 </div>
                             </td>
-                            <td><span class="status-badge">Coming Soon</span></td>
+                            <td class="p-6 px-5 border-b border-white/10"><span class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Project Finished</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>TrailBeacon</strong></td>
-                            <td>Track hikers when there are no signal using IoT</td>
-                            <td>
-                                <div class="project-tags">
-                                    <span class="tag">Firebase</span>
-                                    <span class="tag">MERN</span>
-                                    <span class="tag">IoT</span>
+                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
+                            <td class="p-6 px-5 border-b border-white/10"><strong>TrailBeacon</strong></td>
+                            <td class="p-6 px-5 border-b border-white/10">Track hikers when there are no signal using IoT</td>
+                            <td class="p-6 px-5 border-b border-white/10">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Firebase</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">MERN</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">IoT</span>
                                 </div>
                             </td>
-                            <td><span class="status-badge">Coming Soon</span></td>
+                            <td class="p-6 px-5 border-b border-white/10"><span class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Project Finished</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>Membership App</strong></td>
-                            <td>Club membership with payment, voting, e-commerce, newsletter, events</td>
-                            <td>
-                                <div class="project-tags">
-                                    <span class="tag">Flutter</span>
-                                    <span class="tag">PHP</span>
+                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
+                            <td class="p-6 px-5 border-b border-white/10"><strong>Membership App</strong></td>
+                            <td class="p-6 px-5 border-b border-white/10">Club membership with payment, voting, e-commerce, newsletter, events</td>
+                            <td class="p-6 px-5 border-b border-white/10">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Flutter</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">PHP</span>
                                 </div>
                             </td>
-                            <td><span class="status-badge">Coming Soon</span></td>
+                            <td class="p-6 px-5 border-b border-white/10"><span class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Updating</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>Scanify</strong></td>
-                            <td>Free document scanning app like CamScanner with no hosting needed</td>
-                            <td>
-                                <div class="project-tags">
-                                    <span class="tag">Flutter</span>
-                                    <span class="tag">BLoC</span>
+                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
+                            <td class="p-6 px-5 border-b border-white/10"><strong>Scanify</strong></td>
+                            <td class="p-6 px-5 border-b border-white/10">Free document scanning app like CamScanner with no hosting needed</td>
+                            <td class="p-6 px-5 border-b border-white/10">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Flutter</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">BLoC</span>
                                 </div>
                             </td>
-                            <td><span class="status-badge">Coming Soon</span></td>
+                            <td class="p-6 px-5 border-b border-white/10"><span class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">on Going publishing to PlayStore</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>Bakery System</strong></td>
-                            <td>Complete bakery management system with e-commerce and POS</td>
-                            <td>
-                                <div class="project-tags">
-                                    <span class="tag">React</span>
-                                    <span class="tag">Node.js</span>
+                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
+                            <td class="p-6 px-5 border-b border-white/10"><strong>Bakery System</strong></td>
+                            <td class="p-6 px-5 border-b border-white/10">Complete bakery management system with e-commerce and POS</td>
+                            <td class="p-6 px-5 border-b border-white/10">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">React</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Node.js</span>
                                 </div>
                             </td>
-                            <td><span class="status-badge">Coming Soon</span></td>
+                            <td class="p-6 px-5 border-b border-white/10"><span class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Updating</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>KahwinSettle</strong></td>
-                            <td>Marriage management system mobile application</td>
-                            <td>
-                                <div class="project-tags">
-                                    <span class="tag">Flutter</span>
-                                    <span class="tag">GetX</span>
+                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
+                            <td class="p-6 px-5"><strong>KahwinSettle</strong></td>
+                            <td class="p-6 px-5">Marriage management system mobile application</td>
+                            <td class="p-6 px-5">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Flutter</span>
+                                    <span class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">GetX</span>
                                 </div>
                             </td>
-                            <td><span class="status-badge">Coming Soon</span></td>
+                            <td class="p-6 px-5"><span class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Still Development</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -390,35 +497,36 @@
         </section>
     </main>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-brand">
-                <div class="footer-logo">HI</div>
-                <h2 class="brand-name">Hafeez Ilias</h2>
-                <p class="brand-tagline">Software & IoT Developer</p>
+    <!-- Footer / Contact Section -->
+    <footer class="py-24 pb-12 bg-bg-secondary border-t border-white/10 relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[150%] before:h-px before:bg-gradient-custom before:opacity-50" id="contact">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <div class="w-20 h-20 mx-auto mb-6 bg-gradient-custom rounded-3xl flex items-center justify-center text-4xl font-bold text-white shadow-[0_15px_40px_rgba(99,102,241,0.4)] animate-float">HI</div>
+                <h2 class="text-3xl font-bold gradient-text mb-2">Hafeez Ilias</h2>
+                <p class="text-text-secondary text-lg mb-8">Software & IoT Developer</p>
             </div>
 
-            <div class="footer-cta">
-                <h3>Let's Build Something Amazing</h3>
-                <p>Open to collaborating on FinTech, IoT, or SaaS platforms. Whether you have a project in mind or just want to connect, I'm always excited to discuss new opportunities and innovative ideas!</p>
+            <div class="bg-bg-card p-8 rounded-2xl border border-white/10 max-w-3xl mx-auto mb-12 text-center">
+                <h3 class="text-2xl mb-3 text-text-primary">Let's Build Something Amazing</h3>
+                <p class="text-text-secondary leading-relaxed">Open to collaborating on FinTech, IoT, or SaaS platforms. Whether you have a project in mind or just want to connect, I'm always excited to discuss new opportunities and innovative ideas!</p>
             </div>
 
-            <div class="social-links">
-                <a href="https://github.com/HafeezIlias" target="_blank">
-                    <span class="social-icon">🐙</span>
+            <div class="flex gap-4 justify-center mb-10 flex-wrap">
+                <a href="https://github.com/HafeezIlias" target="_blank" class="text-text-primary no-underline px-8 py-4 bg-bg-card border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 flex items-center gap-3 hover:bg-gradient-custom hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">
+                    <span class="text-xl">🐙</span>
                     <span>GitHub</span>
                 </a>
-                <a href="https://www.linkedin.com/in/hafeez-ilias" target="_blank">
-                    <span class="social-icon">💼</span>
+                <a href="https://www.linkedin.com/in/hafeez-ilias" target="_blank" class="text-text-primary no-underline px-8 py-4 bg-bg-card border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 flex items-center gap-3 hover:bg-gradient-custom hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">
+                    <span class="text-xl">💼</span>
                     <span>LinkedIn</span>
                 </a>
-                <a href="mailto:your.email@example.com">
-                    <span class="social-icon">✉️</span>
+                <a href="mailto:your.email@example.com" class="text-text-primary no-underline px-8 py-4 bg-bg-card border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 flex items-center gap-3 hover:bg-gradient-custom hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">
+                    <span class="text-xl">✉️</span>
                     <span>Email</span>
                 </a>
             </div>
 
-            <div class="footer-bottom">
+            <div class="text-center text-text-secondary pt-8 border-t border-white/10 text-[0.95rem]">
                 <p>&copy; 2024 Hafeez Ilias. Crafted with passion for technology.</p>
             </div>
         </div>
