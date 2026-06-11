@@ -4,821 +4,701 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hafeez Ilias - Software & IoT Developer</title>
+    <title>Hafeez Ilias - Portfolio Mockup v2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'bg-primary': '#0a0a0f',
-                        'bg-secondary': '#12121a',
-                        'bg-card': '#1a1a27',
-                        'text-primary': '#e4e4e7',
-                        'text-secondary': '#a1a1aa',
-                        'accent': '#6366f1',
-                        'accent-hover': '#4f46e5',
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
-                    backgroundImage: {
-                        'gradient-custom': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        'gradient-custom-2': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                    colors: {
+                        surface: {
+                            0: '#ffffff',
+                            1: '#f9fafb',
+                            2: '#f3f4f6',
+                            3: '#e5e7eb',
+                        },
+                        ink: {
+                            DEFAULT: '#111827',
+                            light: '#6b7280',
+                            faint: '#9ca3af',
+                        },
+                        primary: {
+                            DEFAULT: '#2563eb',
+                            light: '#dbeafe',
+                            dark: '#1d4ed8',
+                        },
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom animations and effects */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::selection { background: #bfdbfe; color: #1e3a8a; }
+
         @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-
         @keyframes marquee-reverse {
-            0% {
-                transform: translateX(-50%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
+        .marquee-track { animation: marquee 45s linear infinite; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-track-reverse { animation: marquee-reverse 45s linear infinite; }
+        .marquee-track-reverse:hover { animation-play-state: paused; }
 
-        @keyframes pulse-custom {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .marquee-content {
-            animation: marquee 40s linear infinite;
-        }
-
-        .marquee-content:hover {
-            animation-play-state: paused;
-        }
-
-        .marquee-reverse {
-            animation: marquee-reverse 40s linear infinite;
-        }
-
-        .animate-pulse-custom {
-            animation: pulse-custom 2s infinite;
-        }
-
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .express-logo,
-        .nextjs-logo {
-            filter: invert(1);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
-<body class="bg-bg-primary text-text-primary font-sans leading-relaxed overflow-x-hidden">
-    <!-- Header -->
-    <header
-        class="sticky top-0 z-50 border-b border-white/10 bg-bg-primary/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] py-6">
-        <nav class="max-w-7xl mx-auto px-8 flex justify-between items-center">
-            <a href="#"
-                class="text-2xl font-bold gradient-text no-underline transition-all duration-300 hover:scale-105 hover:brightness-125">HafeezIlias</a>
-            <ul class="flex gap-8 list-none">
-                <li><a href="#home"
-                        class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">Home</a>
-                </li>
-                <li><a href="#about"
-                        class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">About</a>
-                </li>
-                <li><a href="#working"
-                        class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">Projects</a>
-                </li>
-                <li><a href="#contact"
-                        class="text-text-secondary no-underline text-[0.95rem] transition-colors duration-300 hover:text-accent">Contact</a>
-                </li>
-            </ul>
-        </nav>
+<body class="bg-surface-1 text-ink font-sans antialiased">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-surface-3/60">
+        <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+            <a href="#" class="text-base font-bold tracking-tight text-ink">hafeezilias<span class="text-primary">.</span></a>
+            <nav class="hidden md:flex items-center gap-1">
+                <a href="#home" class="px-3 py-1.5 text-[13px] font-medium text-ink-light rounded-md transition-colors hover:text-ink hover:bg-surface-2">Home</a>
+                <a href="#about" class="px-3 py-1.5 text-[13px] font-medium text-ink-light rounded-md transition-colors hover:text-ink hover:bg-surface-2">About</a>
+                <a href="#experience" class="px-3 py-1.5 text-[13px] font-medium text-ink-light rounded-md transition-colors hover:text-ink hover:bg-surface-2">Experience</a>
+                <a href="#projects" class="px-3 py-1.5 text-[13px] font-medium text-ink-light rounded-md transition-colors hover:text-ink hover:bg-surface-2">Projects</a>
+                <a href="#certificates" class="px-3 py-1.5 text-[13px] font-medium text-ink-light rounded-md transition-colors hover:text-ink hover:bg-surface-2">Certificates</a>
+                <a href="#contact" class="px-3 py-1.5 text-[13px] font-medium text-ink-light rounded-md transition-colors hover:text-ink hover:bg-surface-2">Contact</a>
+            </nav>
+            <a href="https://github.com/HafeezIlias" target="_blank" class="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-medium bg-ink text-white rounded-lg transition-all hover:bg-ink/80">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+            </a>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="max-w-7xl mx-auto px-8 py-24 animate-fade-in-up" id="home">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <main class="max-w-5xl mx-auto px-6">
+
+        <!-- Hero -->
+        <section class="py-20 md:py-28" id="home">
+            <div class="grid md:grid-cols-[1fr_auto] gap-12 items-center">
                 <div>
-                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Hafeez Ilias</h1>
-                    <p class="text-xl gradient-text font-semibold mb-6">Software & IoT Developer</p>
-                    <p class="text-lg text-text-secondary mb-8 leading-relaxed">Passionate about building practical and
-                        impactful technology — from smart IoT systems to full-stack web and mobile applications. Active
-                        in leadership as MPP (Student Representative Council) at Universiti Utara Malaysia.</p>
-                    <div class="flex gap-4 flex-wrap">
-                        <a href="#working"
-                            class="px-8 py-3.5 rounded-lg no-underline font-semibold text-base transition-all duration-300 bg-gradient-custom text-white relative overflow-hidden before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-500 hover:before:left-full hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">View
-                            Projects</a>
-                        <a href="https://github.com/HafeezIlias" target="_blank"
-                            class="px-8 py-3.5 rounded-lg no-underline font-semibold text-base transition-all duration-300 bg-bg-card text-text-primary border border-white/10 hover:bg-accent/10 hover:border-accent hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(99,102,241,0.2)]">GitHub
-                            Profile</a>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full mb-5">
+                        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                        Available for opportunities
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4">
+                        Hi, I'm <span class="text-primary">Hafeez</span><span class="text-primary">.</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-ink-light leading-relaxed max-w-lg mb-8">
+                        Software & IoT Developer building practical, impactful technology. From smart IoT systems to full-stack web and mobile apps. Currently MPP at Universiti Utara Malaysia.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#projects" class="px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5">
+                            View Projects
+                        </a>
+                        <a href="#contact" class="px-5 py-2.5 bg-white text-ink text-sm font-semibold rounded-lg border border-surface-3 transition-all hover:bg-surface-2 hover:-translate-y-0.5">
+                            Get in Touch
+                        </a>
                     </div>
                 </div>
-                <div class="flex justify-center items-center">
-                    <img src="profile.jpg" alt="Hafeez Ilias"
-                        class="w-full max-w-md rounded-3xl shadow-[0_20px_60px_rgba(99,102,241,0.3),0_0_40px_rgba(99,102,241,0.2)] transition-all duration-300 border-2 border-accent/20 hover:scale-105 hover:rotate-2 hover:shadow-[0_30px_80px_rgba(99,102,241,0.4),0_0_60px_rgba(99,102,241,0.3)]">
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="bg-bg-secondary py-24" id="about">
-            <div class="max-w-7xl mx-auto px-8">
-                <h2 class="text-center text-4xl font-bold mb-4">Current Focus</h2>
-                <p class="text-center text-text-secondary mb-16 text-lg">Expanding technical expertise across multiple
-                    domains</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <div class="relative z-10">
-                            <div
-                                class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">
-                                ☁️</div>
-                            <h3 class="text-xl mb-2 font-semibold">Cloud Infrastructure</h3>
-                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Building scalable cloud-based
-                                solutions with AWS and modern DevOps practices</p>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <div class="relative z-10">
-                            <div
-                                class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">
-                                📱</div>
-                            <h3 class="text-xl mb-2 font-semibold">Mobile Development</h3>
-                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Creating cross-platform
-                                applications with Flutter and React Native</p>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <div class="relative z-10">
-                            <div
-                                class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">
-                                🌐</div>
-                            <h3 class="text-xl mb-2 font-semibold">Full-Stack Development</h3>
-                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Developing end-to-end
-                                solutions with MERN stack and modern frameworks</p>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-[400ms] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-5 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <div class="relative z-10">
-                            <div
-                                class="w-14 h-14 bg-gradient-custom rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-transform duration-300">
-                                📡</div>
-                            <h3 class="text-xl mb-2 font-semibold">IoT Innovation</h3>
-                            <p class="text-text-secondary text-[0.95rem] leading-relaxed">Designing smart IoT systems
-                                for real-world applications and challenges</p>
-                        </div>
-                    </div>
+                <div class="hidden md:block">
+                    <img src="profile.jpg" alt="Hafeez Ilias" class="w-64 h-64 rounded-2xl object-cover border border-surface-3 shadow-sm">
                 </div>
             </div>
         </section>
 
-        <!-- Currently Working On Section -->
-        <section class="max-w-7xl mx-auto px-8 py-24" id="working">
-            <h2 class="text-center text-4xl font-bold mb-4">Currently Working On</h2>
-            <p class="text-center text-text-secondary mb-16 text-lg">Active projects in development</p>
-            <div class="grid gap-6 max-w-4xl mx-auto">
-                <div
-                    class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
-                    <strong class="text-accent text-lg">Bakery and Coffee Website</strong> - Full-stack website for
-                    cafe management and online ordering
-                </div>
-                <div
-                    class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
-                    <div class="flex items-center justify-between flex-wrap gap-4">
-                        <div>
-                            <strong class="text-accent text-lg">TrailBeacon</strong> - IoT device development for
-                            tracking hikers in areas without network coverage
-                        </div>
-                        <a href="https://hafeezilias.github.io/TrailBeacon-Project-Production/" target="_blank"
-                            class="px-5 py-2 bg-accent text-white rounded-lg text-sm font-semibold no-underline transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_5px_20px_rgba(99,102,241,0.4)] hover:-translate-y-0.5 whitespace-nowrap">View
-                            Project</a>
+        <!-- Bento Grid - About -->
+        <section class="pb-20" id="about">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold text-ink">What I'm focused on</h2>
+                <div class="flex-1 h-px bg-surface-3"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md hover:border-surface-3/80 group">
+                    <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center mb-3 text-blue-600 group-hover:bg-blue-100 transition-colors">
+                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
                     </div>
+                    <h3 class="text-sm font-semibold mb-1">Cloud</h3>
+                    <p class="text-xs text-ink-light leading-relaxed">AWS & modern DevOps infrastructure</p>
                 </div>
-                <div
-                    class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
-                    <strong class="text-accent text-lg">Online Selling App</strong> - Upgrading Flutter mobile
-                    application for e-commerce
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md hover:border-surface-3/80 group">
+                    <div class="w-9 h-9 rounded-lg bg-violet-50 flex items-center justify-center mb-3 text-violet-600 group-hover:bg-violet-100 transition-colors">
+                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+                    </div>
+                    <h3 class="text-sm font-semibold mb-1">Mobile</h3>
+                    <p class="text-xs text-ink-light leading-relaxed">Flutter & React Native apps</p>
                 </div>
-                <div
-                    class="bg-bg-card p-6 px-8 rounded-xl border-l-4 border-accent border border-white/10 transition-all duration-300 hover:translate-x-2.5 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] hover:border-accent/30 hover:bg-accent/5">
-                    <strong class="text-accent text-lg">Scanity</strong> - Preparing new applications
-                    for Google Play Store launch
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md hover:border-surface-3/80 group">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center mb-3 text-emerald-600 group-hover:bg-emerald-100 transition-colors">
+                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+                    </div>
+                    <h3 class="text-sm font-semibold mb-1">Full-Stack</h3>
+                    <p class="text-xs text-ink-light leading-relaxed">MERN stack end-to-end systems</p>
+                </div>
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md hover:border-surface-3/80 group">
+                    <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center mb-3 text-amber-600 group-hover:bg-amber-100 transition-colors">
+                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12 20.25h.008v.008H12v-.008z"/></svg>
+                    </div>
+                    <h3 class="text-sm font-semibold mb-1">IoT</h3>
+                    <p class="text-xs text-ink-light leading-relaxed">Smart systems for real-world use</p>
                 </div>
             </div>
         </section>
 
-        <!-- Currently Learning Section -->
-        <section class="bg-bg-secondary py-24" id="learning">
-            <div class="max-w-7xl mx-auto px-8">
-                <h2 class="text-center text-4xl font-bold mb-4">Currently Learning</h2>
-                <p class="text-center text-text-secondary mb-16 text-lg">Continuous skill development and growth</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:border-accent/40">
-                        <h3 class="text-xl mb-4 text-accent">Backend & Architecture</h3>
-                        <ul class="list-none p-0">
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                Mastering MERN stack scalability</li>
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                System performance optimization</li>
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                API security best practices</li>
-                        </ul>
+        <!-- Professional Certificates -->
+        <section class="pb-20" id="certificates">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold text-ink">Professional Certificates</h2>
+                <div class="flex-1 h-px bg-surface-3"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-3">
+                <!-- Google Cloud Engineer -->
+                <a href="https://www.credly.com/badges/67f33fc9-edcf-43c8-b9fb-e56cefabc4d7" target="_blank" class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group no-underline block">
+                    <div class="flex items-start gap-4">
+                        <img src="https://images.credly.com/size/340x340/images/08096465-cbfc-4c3e-93e5-93c5aa61f23e/image.png"
+                             alt="Google Associate Cloud Engineer Badge"
+                             class="w-16 h-16 rounded-lg object-contain shrink-0">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-start justify-between gap-2">
+                                <h3 class="text-sm font-bold text-ink">Associate Cloud Engineer</h3>
+                                <span class="text-[10px] font-medium text-ink-faint bg-surface-2 px-2 py-0.5 rounded shrink-0">Valid till 2029</span>
+                            </div>
+                            <div class="flex items-center gap-2 mt-1">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="w-4 h-4" alt="Google Cloud">
+                                <p class="text-xs text-primary font-medium">Google Cloud</p>
+                            </div>
+                            <p class="text-[11px] text-ink-faint mt-2 group-hover:text-primary transition-colors">Show credential &rarr;</p>
+                        </div>
                     </div>
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:border-accent/40">
-                        <h3 class="text-xl mb-4 text-accent">Mobile Development</h3>
-                        <ul class="list-none p-0">
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                Production-level Flutter architecture</li>
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                State management patterns</li>
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                IoT device integration</li>
-                        </ul>
-                    </div>
-                    <div
-                        class="bg-bg-card p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:border-accent/40">
-                        <h3 class="text-xl mb-4 text-accent">Cloud & DevOps</h3>
-                        <ul class="list-none p-0">
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                Docker</li>
-                            <li
-                                class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">
-                                Ongoing AWS Cloud Practitioner certification</li>
-                            <!-- <li class="py-2 pl-6 relative text-text-secondary before:content-['→'] before:absolute before:left-0 before:text-accent">CI/CD pipeline implementation</li> -->
-                        </ul>
+                </a>
+                <!-- AWS Cloud Practitioner -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start gap-4">
+                        <img src="https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png"
+                             alt="AWS Cloud Practitioner Badge"
+                             class="w-16 h-16 rounded-lg object-contain shrink-0">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-start justify-between gap-2">
+                                <h3 class="text-sm font-bold text-ink">AWS Cloud Practitioner</h3>
+                                <span class="text-[10px] font-medium text-ink-faint bg-surface-2 px-2 py-0.5 rounded shrink-0">Valid till 2029</span>
+                            </div>
+                            <div class="flex items-center gap-2 mt-1">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="w-4 h-4" alt="AWS">
+                                <p class="text-xs text-primary font-medium">Amazon Web Services</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tech Stack Marquee Section -->
-        <section class="py-16 bg-bg-secondary overflow-hidden relative">
-            <div
-                class="absolute top-0 left-0 w-48 h-full z-10 pointer-events-none bg-gradient-to-r from-bg-secondary to-transparent">
+        <!-- Experience -->
+        <section class="pb-20" id="experience">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold text-ink">Experience</h2>
+                <div class="flex-1 h-px bg-surface-3"></div>
             </div>
-            <div
-                class="absolute top-0 right-0 w-48 h-full z-10 pointer-events-none bg-gradient-to-l from-bg-secondary to-transparent">
-            </div>
-
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2 gradient-text">Technologies & Tools</h2>
-                <p class="text-text-secondary text-base">Building with modern technologies across the stack</p>
-            </div>
-
-            <!-- First Row - Languages & Frontend -->
-            <div class="w-full overflow-hidden relative">
-                <div class="marquee-content flex w-fit">
-                    <!-- First set -->
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                            alt="React"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">React
+            <div class="space-y-3">
+                <!-- Deloitte -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-sm">
+                    <div class="flex items-start gap-4 mb-2">
+                        <img src="DeloitteLogo.jpeg" alt="Deloitte" class="w-10 h-10 rounded-lg object-contain shrink-0 border border-surface-3">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <h3 class="text-sm font-bold text-ink">Software Developer Intern</h3>
+                                    <p class="text-xs text-primary font-medium">Deloitte</p>
+                                </div>
+                                <span class="text-[11px] text-ink-faint bg-surface-2 px-2.5 py-1 rounded-md shrink-0 whitespace-nowrap">Apr 2026 — Present</span>
+                            </div>
+                            <div class="flex gap-1.5 mt-2">
+                                <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Software Development</span>
+                                <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">On-site</span>
+                            </div>
                         </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Frontend</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-                            alt="Flutter"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Flutter
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Mobile</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                            alt="Node.js"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Node.js
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            alt="Python"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Python
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                            alt="MongoDB"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">MongoDB
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                            alt="Firebase"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Firebase
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-                            alt="AWS"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">AWS</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Cloud</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                            alt="Docker"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Docker
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">DevOps</div>
-                    </div>
-                    <!-- Duplicate set for seamless loop -->
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                            alt="React"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">React
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Frontend</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-                            alt="Flutter"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Flutter
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Mobile</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                            alt="Node.js"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Node.js
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            alt="Python"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Python
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                            alt="MongoDB"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">MongoDB
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                            alt="Firebase"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Firebase
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Backend</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-                            alt="AWS"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">AWS</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Cloud</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                            alt="Docker"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Docker
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">DevOps</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Second Row - Tools & Platforms (Reverse) -->
-            <div class="w-full overflow-hidden relative mt-8">
-                <div class="marquee-content marquee-reverse flex w-fit">
-                    <!-- First set -->
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                            alt="Figma"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Figma
+                <!-- UUM - grouped -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-sm">
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="UUM-Emblem.png" alt="UUM" class="w-10 h-10 rounded-lg object-contain shrink-0 ">
+                        <div class="flex-1 min-w-0 flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="text-sm font-bold text-ink">Universiti Utara Malaysia</h3>
+                                <p class="text-xs text-ink-light">Full-time</p>
+                            </div>
+                            <span class="text-[11px] text-ink-faint bg-surface-2 px-2.5 py-1 rounded-md shrink-0 whitespace-nowrap">Oct 2022 — Jan 2026</span>
                         </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Design</div>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">PostgreSQL
+                    <!-- Role 1 -->
+                    <div class="border-l-2 border-surface-3 pl-4 pb-4 mb-4">
+                        <div class="flex items-start justify-between gap-4">
+                            <h4 class="text-[13px] font-semibold text-ink">MCMC Makerspace UUM Members</h4>
+                            <span class="text-[10px] text-ink-faint shrink-0">Jan 2024 — Jan 2026</span>
                         </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Git</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Version Control</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg"
-                            alt="Arduino"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Arduino
+                    <!-- Role 2 -->
+                    <div class="border-l-2 border-surface-3 pl-4 pb-4 mb-4">
+                        <div class="flex items-start justify-between gap-4">
+                            <h4 class="text-[13px] font-semibold text-ink">Student Representative Council School SOC (MPP)</h4>
+                            <span class="text-[10px] text-ink-faint shrink-0">Jan 2023 — Dec 2025</span>
                         </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">IoT</div>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                            alt="Express"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain express-logo">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Express
+                    <!-- Role 3 -->
+                    <div class="border-l-2 border-surface-3 pl-4 pb-4 mb-4">
+                        <div class="flex items-start justify-between gap-4">
+                            <h4 class="text-[13px] font-semibold text-ink">Executive Media Student Representative Council UUM</h4>
+                            <span class="text-[10px] text-ink-faint shrink-0">Dec 2023 — Dec 2024</span>
                         </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                            alt="VS Code"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">VS Code
+                    <!-- Role 4 -->
+                    <div class="border-l-2 border-surface-3 pl-4">
+                        <div class="flex items-start justify-between gap-4">
+                            <h4 class="text-[13px] font-semibold text-ink">Executive KPC Kelantan</h4>
+                            <span class="text-[10px] text-ink-faint shrink-0">Oct 2022 — Dec 2023</span>
                         </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Editor</div>
-                    </div>
-                    <!-- <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain nextjs-logo">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Next.js</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
-                    </div> -->
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Dart</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
-                    </div>
-                    <!-- Duplicate set for seamless loop -->
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                            alt="Figma"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Figma
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Design</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">PostgreSQL
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Database</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Git</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Version Control</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg"
-                            alt="Arduino"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Arduino
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">IoT</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                            alt="Express"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain express-logo">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Express
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                            alt="VS Code"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">VS Code
-                        </div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Editor</div>
-                    </div>
-                    <!-- <div class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain nextjs-logo">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Next.js</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Framework</div>
-                    </div> -->
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[180px] h-[140px] mx-4 px-6 bg-bg-card border border-white/10 rounded-2xl transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-custom before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10 hover:-translate-y-2.5 hover:scale-105 hover:shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:border-accent/50">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart"
-                            class="w-12 h-12 mb-3 relative z-10 transition-transform duration-300 object-contain">
-                        <div class="text-[0.95rem] font-semibold text-text-primary text-center relative z-10">Dart</div>
-                        <div class="text-xs text-text-secondary mt-1 relative z-10">Language</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Projects Section -->
-        <section class="max-w-7xl mx-auto px-8 py-24" id="projects">
-            <h2 class="text-center text-4xl font-bold mb-4">Featured Projects</h2>
-            <p class="text-center text-text-secondary mb-16 text-lg">Portfolio of applications and systems</p>
-            <div class="overflow-x-auto">
-                <table
-                    class="w-full border-collapse mt-8 bg-bg-card rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-white/10">
-                    <thead>
-                        <tr class="bg-gradient-custom text-white">
-                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Project</th>
-                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Description
-                            </th>
-                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Stack</th>
-                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Status</th>
-                            <th class="p-6 px-5 text-left font-semibold uppercase tracking-wider text-sm">Link</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
-                            <td class="p-6 px-5 border-b border-white/10"><strong>Property Sales & Rent</strong></td>
-                            <td class="p-6 px-5 border-b border-white/10">Platform for property sale, rent, owner and
-                                agency management</td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <div class="flex gap-2 flex-wrap">
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">MERN</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Cloudinary</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Clerk</span>
-                                </div>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span
-                                    class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Project
-                                    Finished</span></td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <a href="https://hafeezilias.github.io/Home-Rental-And-Sales-MERN/" target="_blank"
-                                    class="px-4 py-2 bg-accent text-white rounded-lg text-sm font-semibold no-underline transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_5px_15px_rgba(99,102,241,0.4)] hover:-translate-y-0.5 whitespace-nowrap inline-block">View
-                                    Project</a>
-                            </td>
-                        </tr>
-                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
-                            <td class="p-6 px-5 border-b border-white/10"><strong>TrailBeacon</strong></td>
-                            <td class="p-6 px-5 border-b border-white/10">Track hikers when there are no signal using
-                                IoT</td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <div class="flex gap-2 flex-wrap">
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Firebase</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">MERN</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">IoT</span>
-                                </div>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span
-                                    class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Project
-                                    Finished</span></td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <a href="https://hafeezilias.github.io/TrailBeacon-Project-Production/" target="_blank"
-                                    class="px-4 py-2 bg-accent text-white rounded-lg text-sm font-semibold no-underline transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_5px_15px_rgba(99,102,241,0.4)] hover:-translate-y-0.5 whitespace-nowrap inline-block">View
-                                    Project</a>
-                            </td>
-                        </tr>
-                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
-                            <td class="p-6 px-5 border-b border-white/10"><strong>Membership App</strong></td>
-                            <td class="p-6 px-5 border-b border-white/10">Club membership with payment, voting,
-                                e-commerce, newsletter, events</td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <div class="flex gap-2 flex-wrap">
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Flutter</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">PHP</span>
-                                </div>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span
-                                    class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Updating</span>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span class="text-text-secondary text-sm">No
-                                    website yet for this project</span></td>
-                        </tr>
-                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
-                            <td class="p-6 px-5 border-b border-white/10"><strong>Scanify</strong></td>
-                            <td class="p-6 px-5 border-b border-white/10">Free document scanning app like CamScanner
-                                with no hosting needed</td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <div class="flex gap-2 flex-wrap">
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Flutter</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">BLoC</span>
-                                </div>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span
-                                    class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">on
-                                    Going publishing to PlayStore</span></td>
-                            <td class="p-6 px-5 border-b border-white/10"><span class="text-text-secondary text-sm">No
-                                    website yet for this project</span></td>
-                        </tr>
-                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
-                            <td class="p-6 px-5 border-b border-white/10"><strong>Bakery and Coffee Website</strong>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10">Complete bakery management system with
-                                e-commerce and POS</td>
-                            <td class="p-6 px-5 border-b border-white/10">
-                                <div class="flex gap-2 flex-wrap">
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">React</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Node.js</span>
-                                </div>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span
-                                    class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Still
-                                    Development</span>
-                            </td>
-                            <td class="p-6 px-5 border-b border-white/10"><span class="text-text-secondary text-sm">No
-                                    website yet for this project</span></td>
-                        </tr>
-                        <tr class="transition-all duration-300 hover:bg-accent/10 hover:scale-[1.01]">
-                            <td class="p-6 px-5"><strong>KahwinSettle</strong></td>
-                            <td class="p-6 px-5">Marriage management system mobile application</td>
-                            <td class="p-6 px-5">
-                                <div class="flex gap-2 flex-wrap">
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">Flutter</span>
-                                    <span
-                                        class="px-3.5 py-1.5 bg-accent/15 rounded-full text-[0.85rem] text-accent border border-accent/30 font-medium transition-all duration-200 hover:bg-accent/25 hover:-translate-y-0.5">GetX</span>
-                                </div>
-                            </td>
-                            <td class="p-6 px-5"><span
-                                    class="inline-block px-5 py-2 bg-gradient-custom-2 text-white rounded-full text-[0.85rem] font-semibold shadow-[0_5px_15px_rgba(245,87,108,0.3)] animate-pulse-custom">Still
-                                    Development</span></td>
-                            <td class="p-6 px-5"><span class="text-text-secondary text-sm">No website yet for this
-                                    project</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Featured Projects -->
+        <section class="pb-20" id="projects">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold text-ink">Featured Projects</h2>
+                <div class="flex-1 h-px bg-surface-3"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-3">
+                <!-- Project Card: WhatsApp Status HD -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">WhatsApp Status HD Converter</h3>
+                        <a href="https://convertwhatsappstatustohd.my/" target="_blank" class="text-[11px] font-semibold text-primary no-underline flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                            View
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Free tool to upload HD photos & videos to WhatsApp Status without compression</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">H.264</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">FFmpeg</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Web</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-600"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Live</span>
+                    </div>
+                </div>
+                <!-- Project Card 1 -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">Property Sales & Rent</h3>
+                        <a href="https://hafeezilias.github.io/Home-Rental-And-Sales-MERN/" target="_blank" class="text-[11px] font-semibold text-primary no-underline flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                            View
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Platform for property sale, rent, owner and agency management</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">MERN</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Cloudinary</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Clerk</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-600"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Done</span>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">TrailBeacon</h3>
+                        <a href="https://hafeezilias.github.io/TrailBeacon-Project-Production/" target="_blank" class="text-[11px] font-semibold text-primary no-underline flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                            View
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Track hikers when there are no signal using IoT devices</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Firebase</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">MERN</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">IoT</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-600"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Done</span>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">Membership App</h3>
+                        <span class="text-[10px] text-ink-faint">No link yet</span>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Club membership with payment, voting, e-commerce, newsletter, events</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Flutter</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">PHP</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-600"><span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>Updating</span>
+                    </div>
+                </div>
+                <!-- Project Card 4 -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">MudahScan</h3>
+                        <span class="text-[10px] text-ink-faint">No link yet</span>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Free document scanning app like CamScanner with no hosting needed</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Flutter</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">BLoC</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-blue-600"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>In UAT</span>
+                    </div>
+                </div>
+                <!-- Project Card 5 -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">MenuSnap</h3>
+                        <span class="text-[10px] text-ink-faint">No link yet</span>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Complete food system with QR and POS</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">React</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Node.js</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-violet-600"><span class="w-1.5 h-1.5 bg-violet-500 rounded-full"></span>In Dev</span>
+                    </div>
+                </div>
+                <!-- Project Card 6 -->
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5 transition-all hover:shadow-md group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-sm font-bold text-ink">KahwinSettle</h3>
+                        <span class="text-[10px] text-ink-faint">No link yet</span>
+                    </div>
+                    <p class="text-xs text-ink-light mb-4 leading-relaxed">Marriage management system mobile application</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">Flutter</span>
+                            <span class="px-2 py-0.5 bg-surface-2 rounded text-[10px] font-medium text-ink-light">GetX</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-violet-600"><span class="w-1.5 h-1.5 bg-violet-500 rounded-full"></span>In Dev</span>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- Active Projects -->
+        <section class="pb-20" id="working">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold text-ink">Currently building</h2>
+                <div class="flex-1 h-px bg-surface-3"></div>
+            </div>
+            <div class="space-y-2.5">
+                <div class="fade-in bg-white rounded-xl border border-surface-3 px-5 py-4 flex items-center justify-between gap-4 transition-all hover:shadow-sm group">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></div>
+                        <div class="min-w-0">
+                            <span class="text-sm font-semibold text-ink">WhatsApp Status HD Converter</span>
+                            <span class="text-sm text-ink-light ml-1.5 hidden sm:inline">— Upload HD photos & videos to WhatsApp Status</span>
+                        </div>
+                    </div>
+                    <a href="https://convertwhatsappstatustohd.my/" target="_blank"
+                        class="text-[11px] font-semibold text-primary bg-primary-light px-2.5 py-1 rounded-md shrink-0 no-underline transition-colors hover:bg-primary hover:text-white">
+                        Live
+                    </a>
+                </div>
+                <div class="fade-in bg-white rounded-xl border border-surface-3 px-5 py-4 flex items-center justify-between gap-4 transition-all hover:shadow-sm group">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-2 h-2 rounded-full bg-primary shrink-0"></div>
+                        <div class="min-w-0">
+                            <span class="text-sm font-semibold text-ink">MenuSnap</span>
+                            <span class="text-sm text-ink-light ml-1.5 hidden sm:inline">— Complete food system with QR and POS</span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-medium text-ink-faint bg-surface-2 px-2.5 py-1 rounded-md shrink-0">In Dev</span>
+                </div>
+                <div class="fade-in bg-white rounded-xl border border-surface-3 px-5 py-4 flex items-center justify-between gap-4 transition-all hover:shadow-sm group">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></div>
+                        <div class="min-w-0">
+                            <span class="text-sm font-semibold text-ink">TrailBeacon</span>
+                            <span class="text-sm text-ink-light ml-1.5 hidden sm:inline">— IoT hiker tracking without network</span>
+                        </div>
+                    </div>
+                    <a href="https://hafeezilias.github.io/TrailBeacon-Project-Production/" target="_blank"
+                        class="text-[11px] font-semibold text-primary bg-primary-light px-2.5 py-1 rounded-md shrink-0 no-underline transition-colors hover:bg-primary hover:text-white">
+                        Live
+                    </a>
+                </div>               
+                <div class="fade-in bg-white rounded-xl border border-surface-3 px-5 py-4 flex items-center justify-between gap-4 transition-all hover:shadow-sm group">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></div>
+                        <div class="min-w-0">
+                            <span class="text-sm font-semibold text-ink">MudahScan</span>
+                            <span class="text-sm text-ink-light ml-1.5 hidden sm:inline">— Free document scanning app like CamScanner with no hosting needed</span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-medium text-ink-faint bg-surface-2 px-2.5 py-1 rounded-md shrink-0">In UAT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning -->
+        <section class="pb-20" id="learning">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold text-ink">Learning now</h2>
+                <div class="flex-1 h-px bg-surface-3"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-3">
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5">
+                    <h3 class="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Backend & Architecture</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> MERN stack scalability</li>
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> Performance optimization</li>
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> API security practices</li>
+                    </ul>
+                </div>
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5">
+                    <h3 class="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Mobile Development</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> Production Flutter architecture</li>
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> State management patterns</li>
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> IoT device integration</li>
+                    </ul>
+                </div>
+                <div class="fade-in bg-white rounded-xl border border-surface-3 p-5">
+                    <h3 class="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Cloud & DevOps</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> Docker containerization</li>
+                        <li class="flex items-start gap-2 text-sm text-ink-light"><span class="text-surface-3 mt-0.5">&#8250;</span> AWS Cloud Practitioner cert</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer / Contact Section -->
-    <footer
-        class="py-24 pb-12 bg-bg-secondary border-t border-white/10 relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[150%] before:h-px before:bg-gradient-custom before:opacity-50"
-        id="contact">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-12">
-                <div
-                    class="w-20 h-20 mx-auto mb-6 bg-gradient-custom rounded-3xl flex items-center justify-center text-4xl font-bold text-white shadow-[0_15px_40px_rgba(99,102,241,0.4)] animate-float">
-                    HI</div>
-                <h2 class="text-3xl font-bold gradient-text mb-2">Hafeez Ilias</h2>
-                <p class="text-text-secondary text-lg mb-8">Software & IoT Developer</p>
-            </div>
+    <!-- Tech Stack Marquee - full width -->
+    <section class="py-14 bg-white border-y border-surface-3 overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-32 h-full z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
+        <div class="absolute top-0 right-0 w-32 h-full z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
 
-            <div class="bg-bg-card p-8 rounded-2xl border border-white/10 max-w-3xl mx-auto mb-12 text-center">
-                <h3 class="text-2xl mb-3 text-text-primary">Let's Build Something Amazing</h3>
-                <p class="text-text-secondary leading-relaxed">Open to collaborating on FinTech, IoT, or SaaS platforms.
-                    Whether you have a project in mind or just want to connect, I'm always excited to discuss new
-                    opportunities and innovative ideas!</p>
-            </div>
+        <div class="text-center mb-8">
+            <h2 class="text-xl font-bold text-ink">Tech stack</h2>
+        </div>
 
-            <div class="flex gap-4 justify-center mb-10 flex-wrap">
-                <a href="https://github.com/HafeezIlias" target="_blank"
-                    class="text-text-primary no-underline px-8 py-4 bg-bg-card border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 flex items-center gap-3 hover:bg-gradient-custom hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">
-                    <span class="text-xl">🐙</span>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/hafeez-ilias" target="_blank"
-                    class="text-text-primary no-underline px-8 py-4 bg-bg-card border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 flex items-center gap-3 hover:bg-gradient-custom hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">
-                    <span class="text-xl">💼</span>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="mailto:your.email@example.com"
-                    class="text-text-primary no-underline px-8 py-4 bg-bg-card border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 flex items-center gap-3 hover:bg-gradient-custom hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(99,102,241,0.4)]">
-                    <span class="text-xl">✉️</span>
-                    <span>Email</span>
-                </a>
+        <div class="w-full overflow-hidden">
+            <div class="marquee-track flex w-fit">
+                <div class="flex items-center gap-6 px-3">
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">React</div><div class="text-[10px] text-ink-faint">Frontend</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Flutter</div><div class="text-[10px] text-ink-faint">Mobile</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Node.js</div><div class="text-[10px] text-ink-faint">Backend</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Python</div><div class="text-[10px] text-ink-faint">Language</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">MongoDB</div><div class="text-[10px] text-ink-faint">Database</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Firebase</div><div class="text-[10px] text-ink-faint">Backend</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">AWS</div><div class="text-[10px] text-ink-faint">Cloud</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Docker</div><div class="text-[10px] text-ink-faint">DevOps</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Dart</div><div class="text-[10px] text-ink-faint">Language</div></div>
+                    </div>
+                </div>
+                <!-- Duplicate -->
+                <div class="flex items-center gap-6 px-3">
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">React</div><div class="text-[10px] text-ink-faint">Frontend</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Flutter</div><div class="text-[10px] text-ink-faint">Mobile</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Node.js</div><div class="text-[10px] text-ink-faint">Backend</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Python</div><div class="text-[10px] text-ink-faint">Language</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">MongoDB</div><div class="text-[10px] text-ink-faint">Database</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Firebase</div><div class="text-[10px] text-ink-faint">Backend</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">AWS</div><div class="text-[10px] text-ink-faint">Cloud</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Docker</div><div class="text-[10px] text-ink-faint">DevOps</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Dart</div><div class="text-[10px] text-ink-faint">Language</div></div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="text-center text-text-secondary pt-8 border-t border-white/10 text-[0.95rem]">
-                <p>&copy; 2024 Hafeez Ilias. Crafted with passion for technology.</p>
+        <!-- Second row reverse -->
+        <div class="w-full overflow-hidden mt-4">
+            <div class="marquee-track-reverse flex w-fit">
+                <div class="flex items-center gap-6 px-3">
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Figma</div><div class="text-[10px] text-ink-faint">Design</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">PostgreSQL</div><div class="text-[10px] text-ink-faint">Database</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Git</div><div class="text-[10px] text-ink-faint">Version Control</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Arduino</div><div class="text-[10px] text-ink-faint">IoT</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Express</div><div class="text-[10px] text-ink-faint">Framework</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">VS Code</div><div class="text-[10px] text-ink-faint">Editor</div></div>
+                    </div>
+                </div>
+                <!-- Duplicate -->
+                <div class="flex items-center gap-6 px-3">
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Figma</div><div class="text-[10px] text-ink-faint">Design</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">PostgreSQL</div><div class="text-[10px] text-ink-faint">Database</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Git</div><div class="text-[10px] text-ink-faint">Version Control</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Arduino</div><div class="text-[10px] text-ink-faint">IoT</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">Express</div><div class="text-[10px] text-ink-faint">Framework</div></div>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-surface-1 border border-surface-3 rounded-lg px-4 py-2.5 min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-7 h-7">
+                        <div><div class="text-xs font-semibold">VS Code</div><div class="text-[10px] text-ink-faint">Editor</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-surface-3" id="contact">
+        <div class="max-w-5xl mx-auto px-6 py-16">
+            <div class="max-w-md mx-auto text-center mb-10">
+                <h2 class="text-2xl font-bold text-ink mb-2">Let's work together</h2>
+                <p class="text-sm text-ink-light leading-relaxed">Open to collaborating on FinTech, IoT, or SaaS platforms. Always excited to discuss new opportunities.</p>
+            </div>
+            <div class="flex justify-center gap-2.5 mb-12">
+                <a href="https://github.com/HafeezIlias" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-surface-1 border border-surface-3 rounded-lg text-xs font-semibold text-ink no-underline transition-all hover:bg-surface-2 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/hafeez-ilias-a9b113269/" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-surface-1 border border-surface-3 rounded-lg text-xs font-semibold text-ink no-underline transition-all hover:bg-surface-2 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <!-- <a href="mailto:your.email@example.com" class="flex items-center gap-2 px-4 py-2.5 bg-surface-1 border border-surface-3 rounded-lg text-xs font-semibold text-ink no-underline transition-all hover:bg-surface-2 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    Email
+                </a> -->
+            </div>
+            <div class="text-center text-[11px] text-ink-faint pt-6 border-t border-surface-3">
+                &copy; Last Updated on 11 June 2026 Hafeez Ilias
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Fade-in on scroll
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+        // Active nav
+        const sects = document.querySelectorAll('section[id]');
+        const navAs = document.querySelectorAll('header nav a');
+        window.addEventListener('scroll', () => {
+            let cur = '';
+            sects.forEach(s => { if (scrollY >= s.offsetTop - 100) cur = s.id; });
+            navAs.forEach(a => {
+                a.classList.remove('text-ink', 'bg-surface-2');
+                if (a.getAttribute('href') === `#${cur}`) {
+                    a.classList.add('text-ink', 'bg-surface-2');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
